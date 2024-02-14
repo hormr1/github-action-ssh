@@ -1,6 +1,6 @@
 name: Test latest commit
 
-on: 
+on:
   push
 
 jobs:
@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: ls -a via OPEN SSH Private Key
         uses: ./
@@ -24,7 +24,7 @@ jobs:
           command: ls -a
           host: ${{ secrets.HOST }}
           username: garygrossgarten
-          password: ${{ secrets.PASSPHRASE }}  
+          password: ${{ secrets.PASSPHRASE }}
       - name: This step should fail
         uses: ./
         with:
@@ -34,4 +34,4 @@ jobs:
           password: ${{ secrets.PASSPHRASE }}
           privateKey: ${{ secrets.PRIVATE_KEY}}
         env:
-          CI: true    
+          CI: true
